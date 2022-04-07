@@ -1,0 +1,330 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.5.1
+
+workflows:
+  京东农场:
+    triggers:
+      - schedule:
+          cron: "0 4,10,16 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_fruit.js
+  京东萌宠:
+    triggers:
+      - schedule:
+          cron: "0 2,15,20 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_pet.js
+  京东每日签到:
+    triggers:
+      - schedule:
+          cron: "15 16 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_bean_sign.js
+  种豆得豆:
+    triggers:
+      - schedule:
+          cron: "0 2,6,10 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_plantBean.js
+  首页领京豆:
+    triggers:
+      - schedule:
+          cron: "12 23 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_bean_home.js
+  签到领现金:
+    triggers:
+      - schedule:
+          cron: "0 8,18 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_cash.js
+  极速版红包:
+    triggers:
+      - schedule:
+          cron: "50 7,17 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_speed_redpocke.js
+  宠汪汪:
+    triggers:
+      - schedule:
+          cron: "15 0,4,8,12,16,20 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_joy.js
+  宠汪汪兑换:
+    triggers:
+      - schedule:
+          cron: "59 7,15,23 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_joy_reward.js
+  宠汪汪偷狗粮:
+    triggers:
+      - schedule:
+          cron: "10 5,10,15,20 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_joy_steal.js
+  签到图形验证:
+    triggers:
+      - schedule:
+          cron: "14 10 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_sign_graphics.js
+  极速版签到:
+    triggers:
+      - schedule:
+          cron: "0 7 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_speed_sign.js
+  汪汪乐园:
+    triggers:
+      - schedule:
+          cron: "20 0,4,8,12,16,20 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_joy_park.js
+  京喜签到:
+    triggers:
+      - schedule:
+          cron: "20 1,8 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jx_sign.js
+  赚金币:
+    triggers:
+      - schedule:
+          cron: "0 7 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_zjb.js
+  # 店铺签到:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0 16 * * *"
+  #         filters:
+  #           branches:
+  #             only: main
+  #   jobs:
+  #     - init-and-run:
+  #         SYNCURL: jd_dpqd.js
+  京东汽车:
+    triggers:
+      - schedule:
+          cron: "0 16 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_car.js
+  领券中心签到:
+    triggers:
+      - schedule:
+          cron: "15 0 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_ccSign.js
+  领津贴:
+    triggers:
+      - schedule:
+          cron: "10 0 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_jin_tie.js
+  女装盲盒抽京豆:
+    triggers:
+      - schedule:
+          cron: "35 8,12 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_nzmh.js
+  # 城城现金:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0 0,6,12,18 * * *"
+  #         filters:
+  #           branches:
+  #             only: main
+  #   jobs:
+  #     - init-and-run:
+  #         SYNCURL: jd_city.js
+  金榜创造营:
+    triggers:
+      - schedule:
+          cron: "13 1,22 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_gold_creator.js
+  进店领豆:
+    triggers:
+      - schedule:
+          cron: "0 16 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_shop.js
+  # 全民抢京豆:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0 4,12,16 * * *"
+  #         filters:
+  #           branches:
+  #             only: main
+  #   jobs:
+  #     - init-and-run:
+  #         SYNCURL: jd_qjd.js
+  京东快递签到:
+    triggers:
+      - schedule:
+          cron: "10 16 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_kd.js
+  京东直播:
+    triggers:
+      - schedule:
+          cron: "50 4,5,6 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_live.js
+  摇京豆:
+    triggers:
+      - schedule:
+          cron: "5 15,16 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_club_lottery.js
+  京东保价:
+    triggers:
+      - schedule:
+          cron: "41 15 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_price.js
+  京东金榜:
+    triggers:
+      - schedule:
+          cron: "13 22 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_gold_sign.js
+  # 京东签到翻牌:
+  #   triggers:
+  #     - schedule:
+  #         cron: "10 0 * * *"
+  #         filters:
+  #           branches:
+  #             only: main
+  #   jobs:
+  #     - init-and-run:
+  #         SYNCURL: jd_sign_graphics1.js
+  芥么签到:
+    triggers:
+      - schedule:
+          cron: "11 1,16 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - init-and-run:
+          SYNCURL: jd_zsign.js
+
+jobs:
+  init-and-run:
+    docker:
+      - image: cimg/node:lts
+    parameters:
+      SYNCURL:
+        type: string
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: run-script
+          command: node << parameters.SYNCURL >>
