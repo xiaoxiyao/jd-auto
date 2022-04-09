@@ -74,36 +74,36 @@ workflows:
     jobs:
       - init-and-run:
           SYNCURL: jd_speed_redpocke.js
-  宠汪汪:
-    triggers:
-      - schedule:
-          cron: "15 0,4,8,12,16,20 * * *"
-          filters:
-            branches:
-              only: main
-    jobs:
-      - init-and-run:
-          SYNCURL: jd_joy.js
-  宠汪汪兑换:
-    triggers:
-      - schedule:
-          cron: "59 7,15,23 * * *"
-          filters:
-            branches:
-              only: main
-    jobs:
-      - init-and-run:
-          SYNCURL: jd_joy_reward.js
-  宠汪汪偷狗粮:
-    triggers:
-      - schedule:
-          cron: "10 5,10,15,20 * * *"
-          filters:
-            branches:
-              only: main
-    jobs:
-      - init-and-run:
-          SYNCURL: jd_joy_steal.js
+  # 宠汪汪:
+  #   triggers:
+  #     - schedule:
+  #         cron: "15 0,4,8,12,16,20 * * *"
+  #         filters:
+  #           branches:
+  #             only: main
+  #   jobs:
+  #     - init-and-run:
+  #         SYNCURL: jd_joy.js
+  # 宠汪汪兑换:
+  #   triggers:
+  #     - schedule:
+  #         cron: "59 7,15,23 * * *"
+  #         filters:
+  #           branches:
+  #             only: main
+  #   jobs:
+  #     - init-and-run:
+  #         SYNCURL: jd_joy_reward.js
+  # 宠汪汪偷狗粮:
+  #   triggers:
+  #     - schedule:
+  #         cron: "10 5,10,15,20 * * *"
+  #         filters:
+  #           branches:
+  #             only: main
+  #   jobs:
+  #     - init-and-run:
+  #         SYNCURL: jd_joy_steal.js
   签到图形验证:
     triggers:
       - schedule:
@@ -124,16 +124,16 @@ workflows:
     jobs:
       - init-and-run:
           SYNCURL: jd_speed_sign.js
-  汪汪乐园:
-    triggers:
-      - schedule:
-          cron: "20 0,4,8,12,16,20 * * *"
-          filters:
-            branches:
-              only: main
-    jobs:
-      - init-and-run:
-          SYNCURL: jd_joy_park.js
+  # 汪汪乐园:
+  #   triggers:
+  #     - schedule:
+  #         cron: "20 0,4,8,12,16,20 * * *"
+  #         filters:
+  #           branches:
+  #             only: main
+  #   jobs:
+  #     - init-and-run:
+  #         SYNCURL: jd_joy_park.js
   京喜签到:
     triggers:
       - schedule:
