@@ -224,16 +224,16 @@ workflows:
     jobs:
       - init-and-run:
           SYNCURL: jd_gold_creator.js
-  进店领豆:
-    triggers:
-      - schedule:
-          cron: "0 16 * * *"
-          filters:
-            branches:
-              only: main
-    jobs:
-      - init-and-run:
-          SYNCURL: jd_shop.js
+  # 进店领豆:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0 16 * * *"
+  #         filters:
+  #           branches:
+  #             only: main
+  #   jobs:
+  #     - init-and-run:
+  #         SYNCURL: jd_shop.js
   # 全民抢京豆:
   #   triggers:
   #     - schedule:
@@ -283,7 +283,7 @@ workflows:
               only: main
     jobs:
       - init-and-run:
-          SYNCURL: jd_price.js
+          SYNCURL: backUp/jd_price.js
   京东金榜:
     triggers:
       - schedule:
@@ -304,16 +304,16 @@ workflows:
   #   jobs:
   #     - init-and-run:
   #         SYNCURL: jd_sign_graphics1.js
-  芥么签到:
-    triggers:
-      - schedule:
-          cron: "11 1,16 * * *"
-          filters:
-            branches:
-              only: main
-    jobs:
-      - init-and-run:
-          SYNCURL: jd_zsign.js
+  # 芥么签到:
+  #   triggers:
+  #     - schedule:
+  #         cron: "11 1,16 * * *"
+  #         filters:
+  #           branches:
+  #             only: main
+  #   jobs:
+  #     - init-and-run:
+  #         SYNCURL: jd_zsign.js
 
 jobs:
   init-and-run:
