@@ -283,7 +283,7 @@ workflows:
               only: main
     jobs:
       - init-and-run:
-          SYNCURL: backUp/jd_price.js
+          SYNCURL: jd_price.js
   京东金榜:
     triggers:
       - schedule:
