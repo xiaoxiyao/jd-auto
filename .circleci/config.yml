@@ -228,8 +228,13 @@ jobs:
           name: Restore pnpm Package Cache
           keys:
             - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
-      - node/install-packages:
-          pkg-manager: "pnpm"
+      - run:
+          name: Install pnpm package manager
+          command: npm install -g pnpm
+      - run:
+          name: Install Dependencies
+          command: |
+            pnpm install
       - save_cache:
           name: Save pnpm Package Cache
           key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
