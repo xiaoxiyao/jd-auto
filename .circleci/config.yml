@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@4.5.1
+  node: circleci/node@5.2.0
 
 workflows:
   京东农场:
@@ -13,7 +13,7 @@ workflows:
               only: main
     jobs:
       - init-and-run:
-          SYNCURL: jd_fruit.js
+          SYNCURL: dist/jd_fruit.js
   京东萌宠:
     triggers:
       - schedule:
@@ -74,36 +74,6 @@ workflows:
     jobs:
       - init-and-run:
           SYNCURL: jd_speed_redpocke.js
-  # 宠汪汪:
-  #   triggers:
-  #     - schedule:
-  #         cron: "15 0,4,8,12,16,20 * * *"
-  #         filters:
-  #           branches:
-  #             only: main
-  #   jobs:
-  #     - init-and-run:
-  #         SYNCURL: jd_joy.js
-  # 宠汪汪兑换:
-  #   triggers:
-  #     - schedule:
-  #         cron: "59 7,15,23 * * *"
-  #         filters:
-  #           branches:
-  #             only: main
-  #   jobs:
-  #     - init-and-run:
-  #         SYNCURL: jd_joy_reward.js
-  # 宠汪汪偷狗粮:
-  #   triggers:
-  #     - schedule:
-  #         cron: "10 5,10,15,20 * * *"
-  #         filters:
-  #           branches:
-  #             only: main
-  #   jobs:
-  #     - init-and-run:
-  #         SYNCURL: jd_joy_steal.js
   签到图形验证:
     triggers:
       - schedule:
@@ -124,16 +94,6 @@ workflows:
     jobs:
       - init-and-run:
           SYNCURL: jd_speed_sign.js
-  # 汪汪乐园:
-  #   triggers:
-  #     - schedule:
-  #         cron: "20 0,4,8,12,16,20 * * *"
-  #         filters:
-  #           branches:
-  #             only: main
-  #   jobs:
-  #     - init-and-run:
-  #         SYNCURL: jd_joy_park.js
   京喜签到:
     triggers:
       - schedule:
@@ -154,16 +114,6 @@ workflows:
     jobs:
       - init-and-run:
           SYNCURL: jd_zjb.js
-  # 店铺签到:
-  #   triggers:
-  #     - schedule:
-  #         cron: "0 16 * * *"
-  #         filters:
-  #           branches:
-  #             only: main
-  #   jobs:
-  #     - init-and-run:
-  #         SYNCURL: jd_dpqd.js
   京东汽车:
     triggers:
       - schedule:
@@ -204,16 +154,6 @@ workflows:
     jobs:
       - init-and-run:
           SYNCURL: jd_nzmh.js
-  # 城城现金:
-  #   triggers:
-  #     - schedule:
-  #         cron: "0 0,6,12,18 * * *"
-  #         filters:
-  #           branches:
-  #             only: main
-  #   jobs:
-  #     - init-and-run:
-  #         SYNCURL: jd_city.js
   金榜创造营:
     triggers:
       - schedule:
@@ -224,26 +164,6 @@ workflows:
     jobs:
       - init-and-run:
           SYNCURL: jd_gold_creator.js
-  # 进店领豆:
-  #   triggers:
-  #     - schedule:
-  #         cron: "0 16 * * *"
-  #         filters:
-  #           branches:
-  #             only: main
-  #   jobs:
-  #     - init-and-run:
-  #         SYNCURL: jd_shop.js
-  # 全民抢京豆:
-  #   triggers:
-  #     - schedule:
-  #         cron: "0 4,12,16 * * *"
-  #         filters:
-  #           branches:
-  #             only: main
-  #   jobs:
-  #     - init-and-run:
-  #         SYNCURL: jd_qjd.js
   京东快递签到:
     triggers:
       - schedule:
@@ -294,37 +214,36 @@ workflows:
     jobs:
       - init-and-run:
           SYNCURL: jd_gold_sign.js
-  # 京东签到翻牌:
-  #   triggers:
-  #     - schedule:
-  #         cron: "10 0 * * *"
-  #         filters:
-  #           branches:
-  #             only: main
-  #   jobs:
-  #     - init-and-run:
-  #         SYNCURL: jd_sign_graphics1.js
-  # 芥么签到:
-  #   triggers:
-  #     - schedule:
-  #         cron: "11 1,16 * * *"
-  #         filters:
-  #           branches:
-  #             only: main
-  #   jobs:
-  #     - init-and-run:
-  #         SYNCURL: jd_zsign.js
 
 jobs:
   init-and-run:
-    docker:
-      - image: cimg/node:lts
+    executor: node/default
     parameters:
       SYNCURL:
         type: string
     steps:
       - checkout
-      - node/install-packages
+      - restore_cache:
+          name: Restore pnpm Package Cache
+          keys:
+            - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install pnpm package manager
+          command: |
+            corepack enable
+            corepack prepare pnpm@latest --activate
+      - run:
+          name: Install Dependencies
+          command: |
+            pnpm install
+      - save_cache:
+          name: Save pnpm Package Cache
+          key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - node_modules
+      - run:
+          name: build
+          command: pnpm build
       - run:
           name: run-script
           command: node << parameters.SYNCURL >>
