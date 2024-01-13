@@ -230,7 +230,7 @@ jobs:
             - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
       - run:
           name: Install pnpm package manager
-          command: npm install -g pnpm
+          command: wget -qO- https://get.pnpm.io/install.sh | sh -
       - run:
           name: Install Dependencies
           command: |
