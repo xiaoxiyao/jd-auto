@@ -256,9 +256,7 @@ jobs:
             - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
       - run:
           name: Install pnpm package manager
-          command: |
-            corepack enable
-            corepack prepare pnpm@latest --activate
+          command: wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
       - run:
           name: Install Dependencies
           command: |
