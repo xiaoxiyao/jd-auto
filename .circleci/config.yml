@@ -14,7 +14,8 @@ workflows:
           cron: "0 4,10,16 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: dist/jd_fruit.js
@@ -24,7 +25,8 @@ workflows:
           cron: "0 2,15,20 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_pet.js
@@ -34,7 +36,8 @@ workflows:
           cron: "15 16 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_bean_sign.js
@@ -44,7 +47,8 @@ workflows:
           cron: "0 2,6,10 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_plantBean.js
@@ -54,7 +58,8 @@ workflows:
           cron: "12 23 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_bean_home.js
@@ -64,7 +69,8 @@ workflows:
           cron: "0 8,18 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_cash.js
@@ -74,7 +80,8 @@ workflows:
           cron: "50 7,17 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_speed_redpocke.js
@@ -84,7 +91,8 @@ workflows:
           cron: "14 10 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_sign_graphics.js
@@ -94,7 +102,8 @@ workflows:
           cron: "0 7 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_speed_sign.js
@@ -104,7 +113,8 @@ workflows:
           cron: "20 1,8 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jx_sign.js
@@ -114,7 +124,8 @@ workflows:
           cron: "0 7 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_zjb.js
@@ -124,7 +135,8 @@ workflows:
           cron: "0 16 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_car.js
@@ -134,7 +146,8 @@ workflows:
           cron: "15 0 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_ccSign.js
@@ -144,7 +157,8 @@ workflows:
           cron: "10 0 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_jin_tie.js
@@ -154,7 +168,8 @@ workflows:
           cron: "35 8,12 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_nzmh.js
@@ -164,7 +179,8 @@ workflows:
           cron: "13 1,22 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_gold_creator.js
@@ -174,7 +190,8 @@ workflows:
           cron: "10 16 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_kd.js
@@ -184,7 +201,8 @@ workflows:
           cron: "50 4,5,6 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_live.js
@@ -194,7 +212,8 @@ workflows:
           cron: "5 15,16 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_club_lottery.js
@@ -204,7 +223,8 @@ workflows:
           cron: "41 15 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_price.js
@@ -214,7 +234,8 @@ workflows:
           cron: "13 22 * * *"
           filters:
             branches:
-              only: main
+              only:
+                - main
     jobs:
       - init-and-run:
           SYNCURL: jd_gold_sign.js
