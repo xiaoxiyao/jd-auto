@@ -1,0 +1,14 @@
+name: "run"
+inputs:
+  file:
+    type: TEXT
+    required: true
+docker_image_name: "library/node"
+docker_image_tag: "20"
+execute_commands:
+  - corepack enable
+  - corepack prepare pnpm@latest --activate
+  - pnpm install
+  - pnpm build
+  - node $file
+shell: "BASH"

@@ -1,0 +1,12 @@
+- pipeline: "东东农场"
+  on: "SCHEDULE"
+  refs:
+    - "refs/heads/main"
+  cron: "0 4,10,16 * * *"
+  fail_on_prepare_env_warning: true
+  resources: "MEDIUM"
+  actions:
+    - action: "Worker scaling"
+      type: "CUSTOM"
+      custom_type: "run:latest"
+      file: "dist/jd_fruit.js"

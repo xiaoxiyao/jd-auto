@@ -4,10 +4,6 @@ orbs:
   node: circleci/node@5.2.0
 
 workflows:
-  build:
-    jobs:
-      - build
-
   京东农场:
     triggers:
       - schedule:
@@ -241,29 +237,6 @@ workflows:
           SYNCURL: jd_gold_sign.js
 
 jobs:
-  build:
-    executor: node/default
-    steps:
-      - checkout
-      - restore_cache:
-          name: Restore pnpm Package Cache
-          keys:
-            - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
-      - run:
-          name: Install pnpm package manager
-          command: wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
-      - run:
-          name: Install Dependencies
-          command: |
-            pnpm install
-      - save_cache:
-          name: Save pnpm Package Cache
-          key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
-          paths:
-            - node_modules
-      - run:
-          name: build
-          command: pnpm build
   init-and-run:
     executor: node/default
     parameters:
