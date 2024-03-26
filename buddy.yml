@@ -9,5 +9,6 @@
     - action: "Worker scaling"
       type: "CUSTOM"
       custom_type: "run:latest"
+      filesystem_access: true
       inputs:
         file: "dist/jd_fruit.js"
