@@ -1,7 +1,7 @@
 import { exec } from 'child_process';
 import { existsSync, readFileSync, writeFile } from 'fs';
 import { createHmac } from 'crypto';
-import { wait } from 'utils';
+import { wait } from './utils';
 /*
  * @Author: lxk0301 https://gitee.com/lxk0301
  * @Date: 2020-08-19 16:12:40

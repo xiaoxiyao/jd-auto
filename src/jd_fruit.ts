@@ -1,8 +1,8 @@
-import { USER_AGENT } from 'USER_AGENTS';
-import { sendNotify } from 'sendNotify';
-import { wait } from 'utils';
-import cookiesArr from 'jdCookie';
-import shareCodesArr from 'jdFruitShareCodes';
+import { USER_AGENT } from './USER_AGENTS';
+import { sendNotify } from './sendNotify';
+import { wait } from './utils';
+import cookiesArr from './jdCookie';
+import shareCodesArr from './jdFruitShareCodes';
 
 /*
 东东水果:脚本更新地址 https://gitee.com/lxk0301/jd_scripts/raw/master/jd_fruit.js

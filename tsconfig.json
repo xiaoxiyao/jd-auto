@@ -1,12 +1,9 @@
 {
-  "include": [
-    "./src"
-  ],
+  "include": ["./src"],
   "compilerOptions": {
-    "baseUrl": "./src",
     "target": "ESNext",
     "module": "commonjs",
     "outDir": "./dist",
-    "strict": false,
+    "strict": false
   }
 }
