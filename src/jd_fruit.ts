@@ -348,8 +348,7 @@ let duckRes: {
       await TotalBean();
       console.log(`\n开始【京东账号${$index}】${$nickName || $UserName}\n`);
       if (!isLogin) {
-        console.log($name, `【提示】cookie已失效`, `京东账号${$index} ${$nickName || $UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
-        await sendNotify(`${$name}cookie已失效 - ${$UserName}`, `京东账号${$index} ${$UserName}\n请重新登录获取cookie`);
+        // cookie失效，前面已经通知了，这里不用重复通知
         continue
       }
       message = '';
