@@ -14,8 +14,6 @@ import shareCodesArr from './jdFruitShareCodes';
 互助码shareCode请先手动运行脚本查看打印可看到
 一天只能帮助3个人。多出的助力码无效
 
-// zero205：已添加自己账号内部互助，有剩余助力次数再帮我助力
-
 ==========================Quantumultx=========================
 [task_local]
 #jd免费水果
@@ -54,7 +52,6 @@ let jdFruitBeanCard = false;//农场使用水滴换豆卡(如果出现限时活�
 let randomCount = 20;
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
 const urlSchema = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://h5.m.jd.com/babelDiy/Zeus/3KSjXqQabiTuD1cJ28QskrpWoBKT/index.html%22%20%7D`;
-const ZLC = !(process.env.JD_JOIN_ZLC && process.env.JD_JOIN_ZLC === 'false')
 let isLogin: boolean;
 let $UserName: string, $index: number = 0, $nickName: string = '', $retry: number;
 let farmInfo: {
@@ -310,9 +307,6 @@ let duckRes: {
   title: string
 };
 !(async () => {
-  if (!process.env.JD_JOIN_ZLC) {
-    console.log(`【注意】本脚本默认会给助力池进行助力！\n如需加入助力池请添加TG群：https://t.me/jd_zero_205\n如不加入助力池互助，可添加变量名称：JD_JOIN_ZLC，变量值：false\n`)
-  }
   if (!cookiesArr[0]) {
     console.log($name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
     return;
@@ -397,11 +391,13 @@ async function jdFruit() {
       await predictionFruit();//预测水果成熟时间
     } else {
       console.log(`初始化农场数据异常, 请登录京东 app查看农场0元水果功能是否正常,农场初始化数据: ${JSON.stringify(farmInfo)}`);
-      if ($retry < 3) {
+      if ($retry < 2) {
         $retry++
-        console.log(`等待10秒后重试,第:${$retry}次`);
-        await wait(10000);
+        console.log(`等待5秒后重试,第:${$retry}次`);
+        await wait(5000);
         await jdFruit();
+      } else {
+        sendNotify('初始化农场数据异常', `农场初始化数据: ${JSON.stringify(farmInfo)}`);
       }
     }
   } catch (e) {
@@ -1552,7 +1548,7 @@ function shareCodesFormat() {
     newShareCodes = shareCodes[tempIndex].split('@');
   }
   if (!process.env.FRUITSHARECODES) {
-    console.log(`您未填写助力码变量，优先进行账号内互助，再帮【zero205】助力`);
+    console.log(`您未填写助力码变量，优先进行账号内互助`);
     newShareCodes = [...(jdFruitShareArr || []), ...(newShareCodes || [])]
   }
   console.log(`第${$index}个京东账号将要助力的好友${JSON.stringify(newShareCodes)}`)
