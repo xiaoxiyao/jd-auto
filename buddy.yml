@@ -11,4 +11,4 @@
       custom_type: "run:latest"
       filesystem_access: true
       inputs:
-        file: "dist/jd_fruit.js"
+        file: "jd_fruit.js"

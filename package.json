@@ -1,10 +1,11 @@
 {
   "name": "jd-auto",
   "version": "1.0.0",
-  "description": "{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}",
-  "main": "AlipayManor.js",
+  "description": "",
+  "type": "module",
   "scripts": {
-    "build": "tsc"
+    "check": "tsc --noEmit",
+    "build": "swc src -d dist --strip-leading-paths"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
     "ws": "^8.14.2"
   },
   "devDependencies": {
+    "@swc/cli": "^0.3.12",
+    "@swc/core": "^1.6.1",
     "@types/node": "^20.10.6",
     "typescript": "^5.3.3"
   }

@@ -2,8 +2,10 @@
   "include": ["./src"],
   "compilerOptions": {
     "target": "ESNext",
-    "module": "commonjs",
-    "outDir": "./dist",
-    "strict": false
+    "module": "NodeNext",
+    "strict": false,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true
   }
 }
